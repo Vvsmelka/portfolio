@@ -18,33 +18,33 @@ const items: Item[] = [
   {
     area: "md:[grid-area:1/1/2/7]",
     icon: <StrategyIcon className="h-5 w-5" />,
-    title: "Validar antes de invertir",
-    text: "Modelo de negocio, precios y márgenes, y una prueba de demanda barata antes de gastar en producto.",
+    title: "Validación de negocio",
+    text: "Modelo de negocio, precios y márgenes, y pruebas de demanda antes de invertir en producto.",
     tone: "glow",
   },
   {
     area: "md:[grid-area:1/7/2/13]",
     icon: <StorefrontIcon className="h-5 w-5" />,
-    title: "Vender online",
-    text: "Marca, web y tienda en Shopify pensadas para convertir visitas en pedidos y solicitudes.",
+    title: "Ecommerce y marca",
+    text: "Identidad, web y tienda en Shopify orientadas a convertir visitas en pedidos y solicitudes.",
   },
   {
     area: "md:[grid-area:2/1/3/5]",
     icon: <MegaphoneIcon className="h-5 w-5" />,
-    title: "Conseguir clientes",
-    text: "Campañas en Meta por tipo de cliente, cada paso medido y un equipo comercial que llama a tiempo.",
+    title: "Captación de clientes",
+    text: "Campañas en Meta segmentadas por tipo de cliente, con medición de cada paso y seguimiento comercial.",
   },
   {
     area: "md:[grid-area:2/5/3/9]",
     icon: <TreeStructureIcon className="h-5 w-5" />,
-    title: "Ordenar el día a día",
-    text: "CRMs, presupuestadores y automatizaciones a medida de tu equipo, y formación para usar bien la IA.",
+    title: "Procesos e inteligencia artificial",
+    text: "CRM, presupuestadores y automatizaciones a medida, y formación de equipos en inteligencia artificial.",
   },
   {
     area: "md:[grid-area:2/9/3/13]",
     icon: <GlobeHemisphereEastIcon className="h-5 w-5" />,
-    title: "Abrir mercado en Corea del Sur",
-    text: "Inteligencia comercial, proveedores e importación entre Corea del Sur y Europa.",
+    title: "Corea del Sur y Europa",
+    text: "Inteligencia comercial, búsqueda de proveedores e importación entre ambos mercados.",
     tone: "dots",
   },
 ];
@@ -97,8 +97,8 @@ export function Capabilities() {
       <Container>
         <SectionHeading
           id="servicios-t"
-          title="En qué te puedo ayudar"
-          intro="Desde la idea hasta las primeras ventas, y las herramientas para crecer con orden después."
+          title="Servicios"
+          intro="De la validación de la idea a las primeras ventas, y las herramientas para crecer con orden."
         />
         <BlurFade inView delay={0.1}>
           <ul className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-12 md:grid-rows-2">
@@ -111,7 +111,7 @@ export function Capabilities() {
 
       <div className="mt-20 md:mt-28">
         <Container>
-          <p className="mb-6 font-mono text-xs tracking-[0.12em] text-mute uppercase">Herramientas con las que trabajo a diario</p>
+          <p className="mb-6 font-mono text-xs tracking-[0.12em] text-mute uppercase">Herramientas de trabajo</p>
         </Container>
         <div className="relative">
           <Marquee pauseOnHover className="[--duration:38s] [--gap:3.5rem]">

@@ -31,8 +31,8 @@ export function Contact() {
                   Hablemos de tu proyecto.
                 </h2>
                 <p className="mt-6 max-w-lg text-lg leading-relaxed text-mute md:text-xl">
-                  Si tienes un negocio en marcha o una idea que quieres validar, escríbeme y te propongo los siguientes
-                  pasos. Si estás por Bilbao, mejor en persona y con un café.
+                  Si tienes un negocio en marcha o una idea que validar, escríbeme y te propondré los siguientes pasos.
+                  Reuniones en Bilbao o en remoto.
                 </p>
                 <div className="mt-10 flex flex-wrap items-center gap-3">
                   <a

@@ -6,7 +6,7 @@ const facts = [
   ["Formación", "LEINN, Mondragon Unibertsitatea"],
   ["Estancia", "Living Lab en Konkuk University, Seúl (2026)"],
   ["Nitton", "Team Leader, Customer Leader y Digital Leader"],
-  ["Empresas", "Competizione y The Pickle Center"],
+  ["Cofundador", "Competizione y The Pickle Center"],
   ["Idiomas", "Castellano e inglés"],
 ];
 
@@ -30,20 +30,20 @@ export function Profile() {
           </h2>
           <div className="mt-8 grid gap-5 text-lg leading-relaxed text-mute">
             <p>
-              <span className="text-fg">Soy Melkamu Gomez-Cruzado, Melka para casi todo el mundo.</span> Nací en
-              Valladolid, vivo en Bizkaia y estoy en el último curso de LEINN, en Mondragon Unibertsitatea.
+              <span className="text-fg">Melkamu Gomez-Cruzado.</span> Nacido en Valladolid y afincado en Bizkaia,
+              curso el último año de LEINN en Mondragon Unibertsitatea.
             </p>
             <p>
-              Desde 2024 dirijo empresas propias y trabajo con otras en lo que hace crecer un negocio: el modelo, la marca,
-              la venta online y la captación de clientes.
+              He cofundado Competizione y The Pickle Center, y colaboro con otras empresas en lo que hace crecer un
+              negocio: el modelo, la marca, la venta online y la captación de clientes.
             </p>
             <p>
-              Antes de invertir compruebo que hay demanda, protejo el margen y cuido cada detalle que ve el cliente. Uso la
-              inteligencia artificial a diario y la enseño a otros equipos.
+              Trabajo con un criterio claro: validar la demanda antes de invertir, proteger el margen y cuidar cada detalle
+              que ve el cliente. Aplico la inteligencia artificial en el día a día y formo a equipos en su uso.
             </p>
           </div>
           <div className="mt-8">
-            <p className="mb-3 font-mono text-xs tracking-[0.12em] text-mute uppercase">Fuera del trabajo</p>
+            <p className="mb-3 font-mono text-xs tracking-[0.12em] text-mute uppercase">Intereses</p>
             <ul className="flex flex-wrap gap-2">
               {interests.map((i) => (
                 <li key={i} className="rounded-md border border-line bg-ink-2 px-3 py-1.5 text-sm text-fg">

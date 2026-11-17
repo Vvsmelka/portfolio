@@ -20,7 +20,7 @@ const AbraCover = () => (
 
 const cards: CardData[] = [
   {
-    category: "Empresa propia · Importación de vehículos",
+    category: "Cofundador · Importación de vehículos",
     title: "Competizione",
     src: "img/competizione.webp",
     position: "72% 50%",
@@ -47,7 +47,7 @@ const cards: CardData[] = [
     ),
   },
   {
-    category: "Empresa propia · Deporte y ecommerce",
+    category: "Cofundador · Deporte y ecommerce",
     title: "The Pickle Center",
     src: "img/card-tpc.webp",
     content: (
@@ -133,7 +133,7 @@ const cards: CardData[] = [
     ),
   },
   {
-    category: "Producto propio · Servicios para el hogar",
+    category: "Producto · Servicios para el hogar",
     title: "Grem.io",
     src: "img/card-grem.webp",
     content: (
@@ -185,7 +185,7 @@ export function Projects() {
         <SectionHeading
           id="proyectos-t"
           title="Proyectos"
-          intro="Dos empresas propias y proyectos para clientes. En cada caso, el punto de partida, lo que hice y en qué punto está."
+          intro="Empresas que he cofundado y proyectos para clientes: el reto de partida, el trabajo realizado y el estado actual de cada uno."
         />
       </Container>
 

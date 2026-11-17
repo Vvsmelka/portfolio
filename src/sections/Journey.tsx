@@ -24,8 +24,8 @@ const data: TimelineEntry[] = [
       <>
       <P>
         Grado en Liderazgo, Emprendimiento e Innovación en Mondragon Unibertsitatea, en Bilbao, donde se aprende creando y
-        gestionando empresas reales. En Nitton, la junior empresa del grado, ejerzo como Team Leader, Customer Leader y
-        Digital Leader.
+        gestionando empresas reales. En Nitton, la junior empresa del grado, he sido Team Leader y Customer Leader, y hoy
+        soy Digital Leader.
       </P>
         <div className="max-w-sm">
           <Img src="img/bilbao-zubizuri.webp" alt="El puente Zubizuri, junto a la sede de Nitton en Uribitarte" portrait />
@@ -49,12 +49,26 @@ const data: TimelineEntry[] = [
     ),
   },
   {
+    title: "Nov 2025",
+    content: (
+      <>
+        <P>
+          Learning Journey de un mes en Nueva York para The Pickle Center: investigación del mercado del pickleball en
+          Estados Unidos y contacto con posibles socios.
+        </P>
+        <div className="max-w-[16rem]">
+          <Img src="img/nyc-calle.webp" alt="Rascacielos de Nueva York al atardecer" portrait />
+        </div>
+      </>
+    ),
+  },
+  {
     title: "Ene 2026",
     content: (
       <>
         <P>
-          Living Lab en Konkuk University, en Seúl, de enero a abril. De esa estancia nacen Konsultek, la línea coreana de
-          Competizione y el concepto de IcePop.
+          Living Lab en Konkuk University, en Seúl. De esa estancia nacen Konsultek, la línea coreana de Competizione y el
+          concepto de IcePop.
         </P>
         <div className="grid max-w-xl grid-cols-2 gap-3">
           <Img src="img/seul-gs25-vaso.webp" alt="Vaso de hielo en una tienda GS25 de Seúl" portrait />
@@ -110,7 +124,7 @@ export function Journey() {
         <SectionHeading
           id="trayectoria-t"
           title="Trayectoria"
-          intro="Formación, empresas propias y clientes, en orden."
+          intro="Formación, empresas y proyectos, en orden cronológico."
         />
       </Container>
       <Timeline data={data} />
