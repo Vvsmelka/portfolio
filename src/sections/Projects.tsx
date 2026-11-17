@@ -155,15 +155,15 @@ const cards: CardData[] = [
 
 const others = [
   {
+    title: "Konsultek",
+    text: "Nació en 2024 como B-Digital Solutions, con Ander Martin: web, reservas online, SEO local y Kit Digital para pequeños comercios. Desde Seúl suma inteligencia comercial entre Corea del Sur y Europa, con una cartera de exportadores coreanos para una multinacional de certificación.",
+    tag: "Desde 2024",
+  },
+  {
     title: "Strabe Motion",
     href: "https://vvsmelka.github.io/Strabe-App/",
     text: "Marketplace de plazas de garaje entre particulares en Gran Bilbao. Lista de espera, panel de datos y aplicación iOS en desarrollo.",
     tag: "En validación",
-  },
-  {
-    title: "Konsultek",
-    text: "Inteligencia comercial entre Corea del Sur y Europa, iniciada en Seúl. Cartera de exportadores coreanos para una multinacional de certificación.",
-    tag: "2026",
   },
   {
     title: "Torneo de fútbol 7 de Gorliz",
@@ -171,9 +171,20 @@ const others = [
     tag: "Julio de 2026",
   },
   {
-    title: "IcePop",
-    text: "Vasos de hielo sellado para el mercado vasco, inspirados en Seúl. Modelo B2B, dossier y web bilingüe para un piloto de verano.",
-    tag: "Propuesta",
+    title: "Gravity Systems",
+    text: "Plan de negocio de un envase patentado que impide que las botellas de plástico se hundan en el mar. Dossier presentado a BBK ARIN, como director de operaciones.",
+    tag: "Mayo de 2024",
+  },
+  {
+    title: "ShareWay Carpool",
+    text: "Coche compartido entre estudiantes de la UPV/EHU en Leioa: encuesta a estudiantes, plan de implantación con la universidad y prototipo de web.",
+    tag: "Marzo de 2024",
+  },
+  {
+    title: "Learning Path: gestión de equipos",
+    href: "docs/learning-path-melkamu-gomez-cruzado.pdf",
+    text: "Investigación sobre la relación entre la gestión de equipos y los resultados empresariales, a partir de Good to Great, Management Teams y un curso de edX.",
+    tag: "Mayo de 2024",
   },
 ];
 
