@@ -134,26 +134,12 @@ const data: TimelineEntry[] = [
     content: (
       <>
         <P>
-          Living Lab en Konkuk University, en Seúl. De esa estancia nace la línea coreana de Competizione, y Konsultek suma la
-          inteligencia comercial entre Corea del Sur y Europa.
+          Living Lab en Konkuk University, en Seúl. Desde allí, Konsultek suma una línea de inteligencia comercial entre
+          Corea del Sur y Europa.
         </P>
         <div className="grid max-w-xl grid-cols-2 gap-3">
           <Img src="img/seul-gsc-1.webp" alt="Sesión en el Global Startup Center de Seúl" />
           <Img src="img/seul-gsc-2.webp" alt="Encuentro de equipos en el Global Startup Center de Seúl" />
-        </div>
-      </>
-    ),
-  },
-  {
-    title: "Mar 2026",
-    content: (
-      <>
-        <P>
-          Puesta en marcha de Competizione con Iker Arruza y desarrollo de su plataforma interna de importación entre marzo y
-          julio.
-        </P>
-        <div className="max-w-xl">
-          <Img src="img/competizione.webp" alt="Web de Competizione" />
         </div>
       </>
     ),

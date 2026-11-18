@@ -7,7 +7,7 @@ const facts = [
   ["Formación", "LEINN, Mondragon Unibertsitatea"],
   ["Estancia", "Living Lab en Konkuk University, Seúl (2026)"],
   ["Nitton", "Team Leader, Customer Leader y Digital Leader"],
-  ["Cofundador", "Competizione y The Pickle Center"],
+  ["Cofundador", "The Pickle Center"],
   ["Idiomas", "Castellano e inglés"],
 ];
 
@@ -35,8 +35,8 @@ export function Profile() {
               curso el último año de LEINN en Mondragon Unibertsitatea.
             </p>
             <p>
-              He cofundado Competizione y The Pickle Center, y colaboro con otras empresas en lo que hace crecer un
-              negocio: el modelo, la marca, la venta online y la captación de clientes.
+              He cofundado The Pickle Center y colaboro con otras empresas en lo que hace crecer un negocio: el modelo,
+              la marca, la venta online y la captación de clientes.
             </p>
             <p>
               Trabajo con un criterio claro: validar la demanda antes de invertir, proteger el margen y cuidar cada detalle

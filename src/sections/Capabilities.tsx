@@ -8,7 +8,7 @@ const items = [
   {
     title: "Validación de negocio",
     text: "Modelo de negocio, precios y márgenes, y pruebas de demanda antes de invertir en producto.",
-    proof: "Competizione · Gravity Systems",
+    proof: "Gravity Systems · ShareWay",
   },
   {
     title: "Ecommerce y marca",
@@ -27,8 +27,8 @@ const items = [
   },
   {
     title: "Corea del Sur y Europa",
-    text: "Inteligencia comercial, búsqueda de proveedores e importación entre ambos mercados.",
-    proof: "Konsultek · Competizione",
+    text: "Inteligencia comercial, estudios de mercado y búsqueda de socios entre ambos mercados.",
+    proof: "Konsultek · Seúl",
   },
 ];
 

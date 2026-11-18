@@ -41,35 +41,6 @@ const AbraCover = () => (
 
 const cards: Project[] = [
   {
-    category: "Cofundador · Importación de vehículos",
-    title: "Competizione",
-    lead: "Importación a medida de vehículos desde Corea del Sur y Alemania para clientes en España.",
-    facts: ["Corea del Sur · Alemania", "Plataforma interna", "Shopify"],
-    src: "img/competizione.webp",
-    position: "72% 50%",
-    content: (
-      <CaseDetail
-        lead="Importación a medida de vehículos desde Corea del Sur y Alemania para clientes en España. Fundada junto a Iker Arruza, con un socio operativo en Corea del Sur."
-        media={
-          <div className="grid gap-2 p-2">
-            <Shot src="img/competizione.webp" alt="Portada de competizione.es" className="rounded-xl" />
-            <Shot src="img/competizione-catalogo.webp" alt="Catálogo de vehículos de Competizione con precio de mercado y precio de importación" className="rounded-xl" />
-          </div>
-        }
-        caption="competizione.es: portada y catálogo con el precio de mercado en España frente al precio de importación."
-        bullets={[
-          "Modelo de negocio y operativa completa: búsqueda en origen, compra, transporte, aduanas, homologación y matriculación en España.",
-          "Foco en Hyundai, Kia y Genesis, que pueden entrar con arancel preferente gracias al acuerdo comercial entre la Unión Europea y Corea del Sur.",
-          "Tienda en Shopify con precio cerrado llave en mano, comparado con el precio de mercado en España.",
-          "Plataforma interna desarrollada entre marzo y julio de 2026: búsqueda en el mercado coreano, calculadora de costes de importación, CRM y propuestas en PDF para cada cliente.",
-          "Estrategia de contenido en Instagram y vídeo para presentar el mercado coreano al comprador español.",
-        ]}
-        tools={["Shopify", "React", "Supabase", "Vercel", "Meta Ads"]}
-        link={{ href: "https://competizione.es", label: "Visitar competizione.es" }}
-      />
-    ),
-  },
-  {
     category: "Cofundador · Deporte y ecommerce",
     title: "The Pickle Center",
     lead: "Marca de pickleball con tienda online, eventos y asesoría a clubes.",
@@ -379,7 +350,7 @@ export function Projects() {
           aside={`${cards.length} casos`}
           title="Proyectos"
           id="proyectos-t"
-          intro="Empresas que he cofundado y proyectos para clientes: el reto de partida, el trabajo realizado y el estado actual de cada uno."
+          intro="The Pickle Center, que he cofundado, y proyectos para clientes: el reto de partida, el trabajo realizado y el estado actual de cada uno."
         />
       </Container>
 

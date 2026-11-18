@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 
 // Fotos reales de proyectos y lugares: aparecen al mover el cursor o deslizar el dedo.
 const trail: { src: string; label: string }[] = [
-  { src: "img/trail/competizione.webp", label: "Competizione" },
   { src: "img/trail/hero-guggenheim.webp", label: "Bilbao" },
   { src: "img/trail/card-tpc.webp", label: "The Pickle Center" },
   { src: "img/trail/seul-gsc-1.webp", label: "Seúl" },
@@ -34,7 +33,6 @@ const trail: { src: string; label: string }[] = [
 
 // Datos reales de los proyectos, en la franja inferior de la portada.
 const facts: [string, string][] = [
-  ["Competizione", "Importación desde Corea del Sur y Alemania"],
   ["The Pickle Center", "Tienda online con 11 marcas"],
   ["Vitoria-Gasteiz", "Torneo con 50 participantes"],
   ["Plentzia", "Festival de pickleball con 6 pistas"],
@@ -426,7 +424,7 @@ export function Hero() {
                       aria-hidden
                       className="hidden h-px w-8 bg-white/50 sm:block"
                     />
-                    Cofundador de Competizione y The Pickle Center
+                    Cofundador de The Pickle Center
                   </span>
                   <span className="flex items-center gap-4">
                     <Clock city="Bilbao" tz="Europe/Madrid" />
@@ -536,7 +534,6 @@ export function Hero() {
 }
 
 const founded = [
-  { src: "logos/competizione.png", alt: "Competizione", h: "h-5 md:h-6" },
   { src: "logos/tpc.svg", alt: "The Pickle Center", h: "h-7 md:h-8" },
 ];
 const clients = [
