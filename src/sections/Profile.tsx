@@ -1,5 +1,6 @@
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Container, Marks } from "@/components/site/bits";
+import { SectionIntro } from "@/components/site/kinetic";
 
 const facts = [
   ["Base", "Bilbao, Bizkaia"],
@@ -23,12 +24,12 @@ export function Profile() {
   return (
     <section id="perfil" aria-labelledby="perfil-t" className="relative border-t border-line py-24 md:py-36">
       <Marks />
-      <Container className="grid grid-cols-1 gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+      <Container>
+        <SectionIntro index="04" label="Perfil" aside="Bizkaia" title="Perfil" id="perfil-t" max={230} />
+      </Container>
+      <Container className="mt-12 grid grid-cols-1 gap-12 md:mt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
         <BlurFade inView className="min-w-0">
-          <h2 id="perfil-t" className="text-4xl font-semibold tracking-[-0.04em] text-fg md:text-6xl">
-            Perfil
-          </h2>
-          <div className="mt-8 grid gap-5 text-lg leading-relaxed text-mute">
+          <div className="grid gap-5 text-lg leading-relaxed text-mute">
             <p>
               <span className="text-fg">Melkamu Gomez-Cruzado.</span> Nacido en Valladolid y afincado en Bizkaia,
               curso el último año de LEINN en Mondragon Unibertsitatea.

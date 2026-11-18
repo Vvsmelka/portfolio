@@ -1,51 +1,34 @@
-import React from "react";
-import {
-  GlobeHemisphereEastIcon,
-  MegaphoneIcon,
-  StorefrontIcon,
-  StrategyIcon,
-  TreeStructureIcon,
-} from "@phosphor-icons/react";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { motion } from "motion/react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { Marquee } from "@/components/ui/marquee";
-import { BlurFade } from "@/components/ui/blur-fade";
-import { Container, SectionHeading, Marks } from "@/components/site/bits";
-import { cn } from "@/lib/utils";
+import { Container } from "@/components/site/bits";
+import { SectionIntro } from "@/components/site/kinetic";
 
-type Item = { area: string; icon: React.ReactNode; title: string; text: string; tone?: "plain" | "dots" | "glow" };
-
-const items: Item[] = [
+const items = [
   {
-    area: "md:[grid-area:1/1/2/7]",
-    icon: <StrategyIcon className="h-5 w-5" />,
     title: "Validación de negocio",
     text: "Modelo de negocio, precios y márgenes, y pruebas de demanda antes de invertir en producto.",
-    tone: "glow",
+    proof: "Competizione · Gravity Systems",
   },
   {
-    area: "md:[grid-area:1/7/2/13]",
-    icon: <StorefrontIcon className="h-5 w-5" />,
     title: "Ecommerce y marca",
     text: "Identidad, web y tienda en Shopify orientadas a convertir visitas en pedidos y solicitudes.",
+    proof: "The Pickle Center · AN Reformas",
   },
   {
-    area: "md:[grid-area:2/1/3/5]",
-    icon: <MegaphoneIcon className="h-5 w-5" />,
     title: "Captación de clientes",
     text: "Campañas en Meta segmentadas por tipo de cliente, con medición de cada paso y seguimiento comercial.",
+    proof: "AN Reformas · Hosts Revenue",
   },
   {
-    area: "md:[grid-area:2/5/3/9]",
-    icon: <TreeStructureIcon className="h-5 w-5" />,
     title: "Procesos e inteligencia artificial",
     text: "CRM, presupuestadores y automatizaciones a medida, y formación de equipos en inteligencia artificial.",
+    proof: "Hosts Revenue · Abra Innova",
   },
   {
-    area: "md:[grid-area:2/9/3/13]",
-    icon: <GlobeHemisphereEastIcon className="h-5 w-5" />,
     title: "Corea del Sur y Europa",
     text: "Inteligencia comercial, búsqueda de proveedores e importación entre ambos mercados.",
-    tone: "dots",
+    proof: "Konsultek · Competizione",
   },
 ];
 
@@ -64,59 +47,69 @@ const tools = [
   ["googleanalytics", "Google Analytics"],
 ];
 
-function Cell({ item }: { item: Item }) {
-  return (
-    <li className={cn("min-h-[15rem] list-none", item.area)}>
-      <div className="relative h-full rounded-xl border border-line p-1.5 md:p-2">
-        <GlowingEffect spread={40} glow={false} disabled={false} proximity={64} inactiveZone={0.01} borderWidth={2} />
-        <div className="relative flex h-full flex-col justify-between gap-8 overflow-hidden rounded-lg border border-line bg-ink-2 p-6 md:p-7">
-          {item.tone === "dots" && (
-            <div
-              aria-hidden
-              className="absolute inset-0 [background-image:radial-gradient(rgb(0_0_0/0.09)_1px,transparent_1px)] [background-size:14px_14px] [mask-image:linear-gradient(to_top_right,black,transparent_70%)]"
-            />
-          )}
-          {item.tone === "glow" && (
-            <div aria-hidden className="absolute -top-20 -right-16 h-56 w-56 rounded-full bg-accent/10 blur-[80px]" />
-          )}
-          <div className="relative w-fit rounded-md border border-line bg-ink p-2 text-accent">{item.icon}</div>
-          <div className="relative">
-            <h3 className="text-xl font-semibold tracking-tight text-fg md:text-2xl">{item.title}</h3>
-            <p className="mt-2 max-w-md leading-relaxed text-mute">{item.text}</p>
-          </div>
-        </div>
-      </div>
-    </li>
-  );
-}
-
 export function Capabilities() {
   return (
-    <section id="servicios" aria-labelledby="servicios-t" className="relative border-t border-line py-24 md:py-36">
-      <Marks />
-      <Container>
-        <SectionHeading
-          id="servicios-t"
+    <section
+      id="servicios"
+      aria-labelledby="servicios-t"
+      className="relative overflow-hidden bg-[#07090c] py-24 text-white md:py-36"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(50%_40%_at_85%_10%,rgb(37_80_230/0.25),transparent_70%),radial-gradient(40%_35%_at_0%_100%,rgb(159_180_255/0.1),transparent_70%)]"
+      />
+      <Container className="relative">
+        <SectionIntro
+          dark
+          index="02"
+          label="Servicios"
+          aside="Para empresas"
           title="Servicios"
+          id="servicios-t"
           intro="De la validación de la idea a las primeras ventas, y las herramientas para crecer con orden."
         />
-        <BlurFade inView delay={0.1}>
-          <ul className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-12 md:grid-rows-2">
-            {items.map((item) => (
-              <Cell key={item.title} item={item} />
-            ))}
-          </ul>
-        </BlurFade>
+
+        <ol className="mt-14 border-b border-white/12 md:mt-20">
+          {items.map((it, i) => (
+            <motion.li
+              key={it.title}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.04 * i }}
+              className="group relative border-t border-white/12"
+            >
+              {/* Barrido de color al pasar el cursor */}
+              <span
+                aria-hidden
+                className="absolute inset-0 origin-left scale-x-0 bg-[linear-gradient(90deg,rgb(37_80_230/0.22),rgb(37_80_230/0.04))] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+              />
+              <div className="relative grid grid-cols-[2.5rem_1fr] items-baseline gap-x-4 gap-y-3 py-7 md:grid-cols-[4.5rem_1.1fr_1fr_2rem] md:gap-x-8 md:py-10">
+                <span className="font-mono text-xs text-white/45 tabular-nums md:text-sm">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-[1.75rem] leading-[1.02] font-semibold tracking-[-0.04em] transition-transform duration-500 group-hover:translate-x-2 md:text-5xl">
+                  {it.title}
+                </h3>
+                <div className="col-start-2 md:col-start-3">
+                  <p className="leading-relaxed text-white/65 md:text-lg">{it.text}</p>
+                  <p className="mt-3 font-mono text-[11px] tracking-[0.1em] text-[#9fb4ff] uppercase">{it.proof}</p>
+                </div>
+                <ArrowUpRightIcon className="hidden h-6 w-6 self-center text-white/30 transition duration-500 group-hover:rotate-45 group-hover:text-white md:block" />
+              </div>
+            </motion.li>
+          ))}
+        </ol>
       </Container>
 
-      <div className="mt-20 md:mt-28">
+      <div className="relative mt-20 md:mt-28">
         <Container>
-          <p className="mb-6 font-mono text-xs tracking-[0.12em] text-mute uppercase">Herramientas de trabajo</p>
+          <p className="mb-6 font-mono text-xs tracking-[0.12em] text-white/50 uppercase">Herramientas de trabajo</p>
         </Container>
         <div className="relative">
           <Marquee pauseOnHover className="[--duration:38s] [--gap:3.5rem]">
             {tools.map(([slug, name]) => (
-              <div key={slug} className="flex items-center gap-3 text-mute">
+              <div key={slug} className="flex items-center gap-3 text-white/60">
                 <span
                   aria-hidden
                   className="h-6 w-6 bg-current"
@@ -133,8 +126,8 @@ export function Capabilities() {
               </div>
             ))}
           </Marquee>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-ink to-transparent md:w-48" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-ink to-transparent md:w-48" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#07090c] to-transparent md:w-48" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#07090c] to-transparent md:w-48" />
         </div>
       </div>
     </section>

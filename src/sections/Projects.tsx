@@ -1,7 +1,28 @@
-import { ArrowUpRightIcon } from "@phosphor-icons/react";
-import { Carousel, Card, type CardData } from "@/components/ui/apple-cards-carousel";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
+import { ArrowRightIcon, ArrowUpRightIcon, XIcon } from "@phosphor-icons/react";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { CaseDetail, Container, SectionHeading, Shot, Marks } from "@/components/site/bits";
+import { CaseDetail, Container, Shot, Marks } from "@/components/site/bits";
+import { SectionIntro } from "@/components/site/kinetic";
+
+type Project = {
+  category: string;
+  title: string;
+  lead: string;
+  facts: string[];
+  src?: string;
+  cover?: ReactNode;
+  position?: string;
+  content: ReactNode;
+};
 
 const tpcPosts = ["img/tpc-ig-1.webp", "img/tpc-ig-2.webp", "img/tpc-ig-3.webp", "img/tpc-ig-4.webp"];
 
@@ -10,7 +31,7 @@ const AbraCover = () => (
     <div className="absolute inset-0 [background-image:radial-gradient(rgb(255_255_255/0.12)_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_60%_70%,black,transparent_70%)]" />
     <div className="absolute -right-24 -bottom-24 h-80 w-80 rounded-full bg-[#1f6f78]/50 blur-[90px]" />
     <div className="absolute -bottom-10 left-10 h-56 w-56 rounded-full bg-accent/25 blur-[90px]" />
-    <p className="absolute right-6 bottom-24 left-6 text-[2.6rem] leading-[0.95] font-semibold tracking-[-0.04em] text-white/90 md:right-8 md:left-8 md:text-6xl">
+    <p className="absolute top-20 right-6 text-right text-[3.2rem] leading-[0.9] font-semibold tracking-[-0.05em] text-white/20 md:top-24 md:right-10 md:text-[8rem]">
       Economía
       <br />
       azul
@@ -18,10 +39,12 @@ const AbraCover = () => (
   </div>
 );
 
-const cards: CardData[] = [
+const cards: Project[] = [
   {
     category: "Cofundador · Importación de vehículos",
     title: "Competizione",
+    lead: "Importación a medida de vehículos desde Corea del Sur y Alemania para clientes en España.",
+    facts: ["Corea del Sur · Alemania", "Plataforma interna", "Shopify"],
     src: "img/competizione.webp",
     position: "72% 50%",
     content: (
@@ -49,6 +72,8 @@ const cards: CardData[] = [
   {
     category: "Cofundador · Deporte y ecommerce",
     title: "The Pickle Center",
+    lead: "Marca de pickleball con tienda online, eventos y asesoría a clubes.",
+    facts: ["11 marcas", "Torneo con 50 participantes", "Festival con 6 pistas"],
     src: "img/card-tpc.webp",
     content: (
       <CaseDetail
@@ -75,6 +100,8 @@ const cards: CardData[] = [
   {
     category: "Cliente · Reformas y rehabilitación",
     title: "AN Reformas",
+    lead: "Marca, web y sistema de captación, del anuncio a la visita comercial.",
+    facts: ["17 tipos de trabajo", "Presupuesto en directo", "En desarrollo"],
     src: "img/card-anreformas.webp",
     content: (
       <CaseDetail
@@ -96,6 +123,8 @@ const cards: CardData[] = [
   {
     category: "Cliente · Revenue management turístico",
     title: "Hosts Revenue",
+    lead: "Web de captación y CRM para el equipo comercial de una empresa de revenue management turístico.",
+    facts: ["Asignación automática", "Vistas por rol", "Panel de dirección"],
     src: "img/card-crm.webp",
     position: "0% 50%",
     content: (
@@ -116,6 +145,8 @@ const cards: CardData[] = [
   {
     category: "Consultoría · Inteligencia artificial",
     title: "Abra Innova",
+    lead: "Cribado mundial con IA de oportunidades en la economía azul, para una consultora de Bizkaia.",
+    facts: ["Fuentes en 4 idiomas", "Cada dato con su cita", "Curso de IA en 5 sesiones"],
     cover: <AbraCover />,
     content: (
       <CaseDetail
@@ -135,6 +166,8 @@ const cards: CardData[] = [
   {
     category: "Producto · Servicios para el hogar",
     title: "Grem.io",
+    lead: "Reservas de fontanería, electricidad y limpieza en Bilbao y la costa, con precio cerrado.",
+    facts: ["Precio cerrado", "Reserva por franjas", "Google Calendar"],
     src: "img/card-grem.webp",
     content: (
       <CaseDetail
@@ -188,19 +221,169 @@ const others = [
   },
 ];
 
+function CaseModal({ p, open, onClose }: { p: Project; open: boolean; onClose: () => void }) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open, onClose]);
+
+  return createPortal(
+    <AnimatePresence>
+      {open && (
+        <div className="fixed inset-0 z-[70] overflow-auto" role="dialog" aria-modal="true" aria-label={p.title}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/55 backdrop-blur-md"
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-[80] mx-auto my-4 h-fit max-w-4xl rounded-2xl border border-line bg-ink-2 p-5 md:my-12 md:p-10"
+          >
+            <button
+              type="button"
+              aria-label="Cerrar"
+              onClick={onClose}
+              autoFocus
+              className="sticky top-4 right-0 z-10 ml-auto flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-ink-3 text-fg transition hover:bg-black/5"
+            >
+              <XIcon className="h-5 w-5" />
+            </button>
+            <p className="font-mono text-sm text-mute">{p.category}</p>
+            <h3 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-fg md:text-6xl">{p.title}</h3>
+            <div className="pt-8">{p.content}</div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>,
+    document.body,
+  );
+}
+
+/** Cada proyecto ocupa la pantalla y se queda fijo mientras el siguiente se apila encima. */
+function StackCard({ p, i, total, progress }: { p: Project; i: number; total: number; progress: MotionValue<number> }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start start"] });
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.25, 1]);
+  const scale = useTransform(progress, [i / total, 1], [1, 1 - (total - i) * 0.035]);
+  const close = useRef(() => {
+    setOpen(false);
+    trigger.current?.focus({ preventScroll: true });
+  }).current;
+
+  return (
+    <div ref={ref} className="sticky top-0 flex h-[100svh] items-center justify-center px-3 md:px-6">
+      <motion.article
+        style={{ scale: reduce ? 1 : scale, top: `calc(-4vh + ${i * 16}px)` }}
+        className="relative h-[78svh] max-h-[760px] w-full max-w-6xl origin-top overflow-hidden rounded-[22px] border border-white/10 bg-[#0b0d10] text-white shadow-[0_-24px_60px_-30px_rgb(0_0_0/0.55)] md:rounded-[28px]"
+      >
+        {/* Imagen: arriba en móvil y a la derecha en escritorio, fundida con el fondo para que no choque con el título */}
+        <div className="absolute inset-x-0 top-0 h-[55%] overflow-hidden md:inset-y-0 md:right-0 md:left-auto md:h-full md:w-[64%]">
+          <motion.div className="h-full w-full" style={reduce ? undefined : { scale: imgScale }}>
+            {p.src ? (
+              <img
+                src={p.src}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                style={p.position ? { objectPosition: p.position } : undefined}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              p.cover
+            )}
+          </motion.div>
+        </div>
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgb(11_13_16/0.7)_0%,transparent_14%,transparent_30%,#0b0d10_56%)] md:bg-[linear-gradient(90deg,#0b0d10_36%,rgb(11_13_16/0.55)_56%,rgb(11_13_16/0.1)_82%),linear-gradient(180deg,rgb(11_13_16/0.55)_0%,transparent_20%)]"
+        />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_55%_at_0%_100%,rgb(37_80_230/0.22),transparent_70%)]" />
+
+        <div className="relative flex h-full flex-col justify-between p-5 md:p-10">
+          <div className="flex items-start justify-between gap-4 font-mono text-[11px] tracking-[0.14em] text-white/70 uppercase md:text-xs">
+            <span>{p.category}</span>
+            <span className="shrink-0 tabular-nums">
+              {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+            </span>
+          </div>
+
+          <div>
+            <h3 className="max-w-[12ch] text-[2.6rem] leading-[0.92] font-semibold tracking-[-0.05em] [text-wrap:balance] md:text-6xl lg:text-[5.5rem]">
+              {p.title}
+            </h3>
+            <p className="mt-4 max-w-md text-base leading-relaxed text-white/75 md:mt-5 md:text-lg">{p.lead}</p>
+            <div className="mt-5 flex flex-col gap-5 md:mt-7 md:max-w-[44%] lg:max-w-[46%]">
+              <ul className="flex flex-wrap gap-2">
+                {p.facts.map((f) => (
+                  <li
+                    key={f}
+                    className="rounded-md border border-white/15 bg-white/[0.08] px-2.5 py-1 font-mono text-[11px] text-white/85 backdrop-blur-md md:text-xs"
+                  >
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <button
+                ref={trigger}
+                type="button"
+                onClick={() => setOpen(true)}
+                className="group inline-flex w-fit shrink-0 items-center gap-2 rounded-lg bg-white px-5 py-3 font-medium text-[#0e0f11] transition hover:-translate-y-px hover:bg-white/90 active:translate-y-px"
+              >
+                Ver caso completo
+                <ArrowRightIcon className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </motion.article>
+      <CaseModal p={p} open={open} onClose={close} />
+    </div>
+  );
+}
+
+function ProjectStack() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  return (
+    <div ref={ref} className="relative mt-6 md:mt-10">
+      {cards.map((p, i) => (
+        <StackCard key={p.title} p={p} i={i} total={cards.length} progress={scrollYProgress} />
+      ))}
+    </div>
+  );
+}
+
 export function Projects() {
   return (
-    <section id="proyectos" aria-labelledby="proyectos-t" className="relative border-t border-line py-24 md:py-36">
+    <section id="proyectos" aria-labelledby="proyectos-t" className="relative border-t border-line pt-24 pb-24 md:pt-36 md:pb-36">
       <Marks />
       <Container>
-        <SectionHeading
-          id="proyectos-t"
+        <SectionIntro
+          index="01"
+          label="Proyectos"
+          aside={`${cards.length} casos`}
           title="Proyectos"
+          id="proyectos-t"
           intro="Empresas que he cofundado y proyectos para clientes: el reto de partida, el trabajo realizado y el estado actual de cada uno."
         />
       </Container>
 
-      <Carousel items={cards.map((card, i) => <Card key={card.title} card={card} index={i} />)} />
+      <ProjectStack />
 
       <Container className="mt-20 md:mt-28">
         <BlurFade inView>

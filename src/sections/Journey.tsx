@@ -1,6 +1,7 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { Timeline, type TimelineEntry } from "@/components/ui/timeline";
-import { Container, SectionHeading, Marks } from "@/components/site/bits";
+import { Container, Marks } from "@/components/site/bits";
+import { SectionIntro } from "@/components/site/kinetic";
 
 const P = ({ children }: { children: React.ReactNode }) => (
   <p className="mb-6 max-w-2xl text-base leading-relaxed text-fg/85 md:text-lg">{children}</p>
@@ -187,9 +188,12 @@ export function Journey() {
     <section id="trayectoria" aria-labelledby="trayectoria-t" className="relative border-t border-line pt-24 md:pt-36">
       <Marks />
       <Container>
-        <SectionHeading
-          id="trayectoria-t"
+        <SectionIntro
+          index="03"
+          label="Trayectoria"
+          aside="2023 — hoy"
           title="Trayectoria"
+          id="trayectoria-t"
           intro="Formación, empresas y proyectos, en orden cronológico."
         />
       </Container>

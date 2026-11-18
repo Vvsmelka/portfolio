@@ -1,6 +1,5 @@
 import React from "react";
 import { ArrowUpRightIcon, PlusIcon } from "@phosphor-icons/react";
-import { BlurFade } from "@/components/ui/blur-fade";
 import { cn } from "@/lib/utils";
 
 export function Container({ className, children }: { className?: string; children: React.ReactNode }) {
@@ -23,17 +22,6 @@ export function Marks() {
         <PlusIcon weight="light" className="absolute -top-[7px] -right-[7px] h-[14px] w-[14px] text-fg/45" />
       </div>
     </div>
-  );
-}
-
-export function SectionHeading({ title, intro, id }: { title: string; intro?: string; id?: string }) {
-  return (
-    <BlurFade inView offset={12}>
-      <h2 id={id} className="text-4xl font-semibold tracking-[-0.04em] text-fg md:text-6xl">
-        {title}
-      </h2>
-      {intro && <p className="mt-5 max-w-2xl text-lg leading-relaxed text-mute md:text-xl">{intro}</p>}
-    </BlurFade>
   );
 }
 

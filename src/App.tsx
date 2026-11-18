@@ -2,6 +2,7 @@ import { MotionConfig } from "motion/react";
 import { Nav } from "@/sections/Nav";
 import { Hero, Logos } from "@/sections/Hero";
 import { Projects } from "@/sections/Projects";
+import { Words } from "@/sections/Words";
 import { Capabilities } from "@/sections/Capabilities";
 import { Journey } from "@/sections/Journey";
 import { Profile } from "@/sections/Profile";
@@ -22,6 +23,7 @@ export default function App() {
       <main className="relative z-10">
         <Hero />
         <Logos />
+        <Words />
         <Projects />
         <Capabilities />
         <Journey />
