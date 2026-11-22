@@ -17,6 +17,7 @@ type Project = {
   category: string;
   title: string;
   lead: string;
+  role: string;
   facts: string[];
   src?: string;
   cover?: ReactNode;
@@ -44,6 +45,7 @@ const cards: Project[] = [
     category: "Cofundador · Deporte y ecommerce",
     title: "The Pickle Center",
     lead: "Marca de pickleball con tienda online, eventos y asesoría a clubes.",
+    role: "Cofundador: tienda, marca, eventos y alianzas",
     facts: ["11 marcas", "Torneo con 50 participantes", "Festival con 6 pistas"],
     src: "img/card-tpc.webp",
     content: (
@@ -72,6 +74,7 @@ const cards: Project[] = [
     category: "Cliente · Reformas y rehabilitación",
     title: "AN Reformas",
     lead: "Marca, web y sistema de captación, del anuncio a la visita comercial.",
+    role: "Web, presupuestador y campañas de captación",
     facts: ["17 tipos de trabajo", "Presupuesto en directo", "En desarrollo"],
     src: "img/card-anreformas.webp",
     content: (
@@ -95,6 +98,7 @@ const cards: Project[] = [
     category: "Cliente · Revenue management turístico",
     title: "Hosts Revenue",
     lead: "Web de captación y CRM para el equipo comercial de una empresa de revenue management turístico.",
+    role: "Web de captación y CRM comercial",
     facts: ["Asignación automática", "Vistas por rol", "Panel de dirección"],
     src: "img/card-crm.webp",
     position: "0% 50%",
@@ -117,6 +121,7 @@ const cards: Project[] = [
     category: "Consultoría · Inteligencia artificial",
     title: "Abra Innova",
     lead: "Cribado mundial con IA de oportunidades en la economía azul, para una consultora de Bizkaia.",
+    role: "Cribado con IA y curso para el equipo",
     facts: ["Fuentes en 4 idiomas", "Cada dato con su cita", "Curso de IA en 5 sesiones"],
     cover: <AbraCover />,
     content: (
@@ -138,6 +143,7 @@ const cards: Project[] = [
     category: "Producto · Servicios para el hogar",
     title: "Grem.io",
     lead: "Reservas de fontanería, electricidad y limpieza en Bilbao y la costa, con precio cerrado.",
+    role: "Producto completo: precios, reservas y avisos",
     facts: ["Precio cerrado", "Reserva por franjas", "Google Calendar"],
     src: "img/card-grem.webp",
     content: (
@@ -160,7 +166,7 @@ const cards: Project[] = [
 const others = [
   {
     title: "Konsultek",
-    text: "Nació en 2024 como B-Digital Solutions, con Ander Martin: web, reservas online, SEO local y Kit Digital para pequeños comercios. Desde Seúl suma inteligencia comercial entre Corea del Sur y Europa, con una cartera de exportadores coreanos para una multinacional de certificación.",
+    text: "Nació en 2024 como B-Digital Solutions, con Ander Martin: web, reservas online, SEO local y Kit Digital para pequeños comercios. Desde Seúl suma inteligencia comercial entre Corea del Sur y Europa.",
     tag: "Desde 2024",
   },
   {
@@ -168,27 +174,6 @@ const others = [
     href: "https://vvsmelka.github.io/Strabe-App/",
     text: "Marketplace de plazas de garaje entre particulares en Gran Bilbao. Lista de espera, panel de datos y aplicación iOS en desarrollo.",
     tag: "En validación",
-  },
-  {
-    title: "Torneo de fútbol 7 de Gorliz",
-    text: "Organización completa durante una semana, tres categorías y aplicación de resultados en tiempo real.",
-    tag: "Julio de 2026",
-  },
-  {
-    title: "Gravity Systems",
-    text: "Plan de negocio de un envase patentado que impide que las botellas de plástico se hundan en el mar. Dossier presentado a BBK ARIN, como director de operaciones.",
-    tag: "Mayo de 2024",
-  },
-  {
-    title: "ShareWay Carpool",
-    text: "Coche compartido entre estudiantes de la UPV/EHU en Leioa: encuesta a estudiantes, plan de implantación con la universidad y prototipo de web.",
-    tag: "Marzo de 2024",
-  },
-  {
-    title: "Learning Path: gestión de equipos",
-    href: "docs/learning-path-melkamu-gomez-cruzado.pdf",
-    text: "Investigación sobre la relación entre la gestión de equipos y los resultados empresariales, a partir de Good to Great, Management Teams y un curso de edX.",
-    tag: "Mayo de 2024",
   },
 ];
 
@@ -297,7 +282,10 @@ function StackCard({ p, i, total, progress }: { p: Project; i: number; total: nu
             <h3 className="max-w-[12ch] text-[2.6rem] leading-[0.92] font-semibold tracking-[-0.05em] [text-wrap:balance] md:text-6xl lg:text-[5.5rem]">
               {p.title}
             </h3>
-            <p className="mt-4 max-w-md text-base leading-relaxed text-white/75 md:mt-5 md:text-lg">{p.lead}</p>
+            <p className="mt-3 max-w-md font-mono text-[11px] tracking-[0.1em] text-[#9fb4ff] uppercase md:text-xs">
+              Mi papel · {p.role}
+            </p>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-white/75 md:mt-4 md:text-lg">{p.lead}</p>
             <div className="mt-5 flex flex-col gap-5 md:mt-7 md:max-w-[44%] lg:max-w-[46%]">
               <ul className="flex flex-wrap gap-2">
                 {p.facts.map((f) => (
@@ -345,12 +333,12 @@ export function Projects() {
       <Marks />
       <Container>
         <SectionIntro
-          index="01"
+          index="05"
           label="Proyectos"
           aside={`${cards.length} casos`}
           title="Proyectos"
           id="proyectos-t"
-          intro="The Pickle Center, que he cofundado, y proyectos para clientes: el reto de partida, el trabajo realizado y el estado actual de cada uno."
+          intro="The Pickle Center, que he cofundado, y proyectos para clientes. Lo esencial de cada uno; el detalle, en su ficha."
         />
       </Container>
 

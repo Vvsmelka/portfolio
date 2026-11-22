@@ -2,10 +2,12 @@ import { BlurFade } from "@/components/ui/blur-fade";
 import { Container, Marks } from "@/components/site/bits";
 import { SectionIntro } from "@/components/site/kinetic";
 
+// Todo lo que alguien quiere saber de un vistazo, sin tener que deducirlo.
 const facts = [
-  ["Base", "Bilbao, Bizkaia"],
-  ["Formación", "LEINN, Mondragon Unibertsitatea"],
-  ["Estancia", "Living Lab en Konkuk University, Seúl (2026)"],
+  ["Edad", "21 años"],
+  ["Base", "Bilbao, Bizkaia · nacido en Valladolid"],
+  ["Formación", "LEINN, Mondragon Unibertsitatea · 4.º curso (2023–2027)"],
+  ["Estancias", "Seúl (Living Lab, 2026) · Nueva York (2025) · India"],
   ["Nitton", "Team Leader, Customer Leader y Digital Leader"],
   ["Cofundador", "The Pickle Center"],
   ["Idiomas", "Castellano e inglés"],
@@ -18,29 +20,30 @@ const now = [
   { name: "The Pickle Center", what: "Sesiones en centros educativos de Bizkaia", tag: "En marcha" },
 ];
 
-const interests = ["Pickleball", "Coches", "Viajar", "Corea del Sur", "Leer"];
+const interests = ["Pickleball", "Balonmano", "Viajar", "Corea del Sur", "Leer"];
 
 export function Profile() {
   return (
     <section id="perfil" aria-labelledby="perfil-t" className="relative border-t border-line py-24 md:py-36">
       <Marks />
       <Container>
-        <SectionIntro index="04" label="Perfil" aside="Bizkaia" title="Perfil" id="perfil-t" max={230} />
+        <SectionIntro index="01" label="Sobre mí" aside="21 años · Bilbao" title="Sobre mí" id="perfil-t" max={230} />
       </Container>
       <Container className="mt-12 grid grid-cols-1 gap-12 md:mt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
         <BlurFade inView className="min-w-0">
           <div className="grid gap-5 text-lg leading-relaxed text-mute">
             <p>
-              <span className="text-fg">Melkamu Gomez-Cruzado.</span> Nacido en Valladolid y afincado en Bizkaia,
-              curso el último año de LEINN en Mondragon Unibertsitatea.
+              <span className="text-fg">Soy Melkamu Gomez-Cruzado, tengo 21 años y vivo en Bilbao.</span> Estoy en el
+              último curso de LEINN, el grado de Liderazgo, Emprendimiento e Innovación de Mondragon Unibertsitatea.
             </p>
             <p>
-              He cofundado The Pickle Center y colaboro con otras empresas en lo que hace crecer un negocio: el modelo,
-              la marca, la venta online y la captación de clientes.
+              Desde el primer curso aprendo con proyectos reales: he cofundado The Pickle Center, lo he llevado a India,
+              Nueva York y Seúl, y hoy llevo proyectos de ecommerce, captación de clientes e inteligencia artificial para
+              empresas de Bizkaia.
             </p>
             <p>
-              Trabajo con un criterio claro: validar la demanda antes de invertir, proteger el margen y cuidar cada detalle
-              que ve el cliente. Aplico la inteligencia artificial en el día a día y formo a equipos en su uso.
+              Donde más aporto es abriendo mercado: poner en marcha un proyecto, conseguir los primeros clientes y crear
+              relaciones con marcas, clubes y socios, aquí o fuera.
             </p>
           </div>
           <div className="mt-8">

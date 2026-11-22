@@ -424,7 +424,7 @@ export function Hero() {
                       aria-hidden
                       className="hidden h-px w-8 bg-white/50 sm:block"
                     />
-                    Cofundador de The Pickle Center
+                    21 años · Bilbao · Último curso de LEINN
                   </span>
                   <span className="flex items-center gap-4">
                     <Clock city="Bilbao" tz="Europe/Madrid" />

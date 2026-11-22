@@ -32,7 +32,7 @@ export function Contact() {
 
       <Container className="relative">
         <div className="flex items-center justify-between border-b border-white/15 pb-4 font-mono text-[11px] tracking-[0.16em] text-white/55 uppercase md:text-xs">
-          <span>(05) Contacto</span>
+          <span>(06) Contacto</span>
           <span>Bilbao · Remoto</span>
         </div>
         <div className="mt-6 md:mt-8">
@@ -47,8 +47,8 @@ export function Contact() {
             transition={{ duration: 0.9, ease: EASE }}
           >
             <p className="max-w-lg text-lg leading-relaxed text-white/70 md:text-xl">
-              Si tienes un negocio en marcha o una idea que validar, escríbeme y te propondré los siguientes pasos.
-              Reuniones en Bilbao o en remoto.
+              Si buscas a alguien que abra mercado o ponga en marcha un proyecto en tu empresa, o tienes una idea que
+              validar, escríbeme. Reuniones en Bilbao o en remoto.
             </p>
             <a
               href={`mailto:${EMAIL}`}

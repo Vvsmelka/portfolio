@@ -3,10 +3,11 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 const links = [
+  { href: "#perfil", label: "Sobre mí" },
+  { href: "#leinn", label: "LEINN" },
+  { href: "#viajes", label: "Viajes" },
+  { href: "#aptitudes", label: "Aptitudes" },
   { href: "#proyectos", label: "Proyectos" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#trayectoria", label: "Trayectoria" },
-  { href: "#perfil", label: "Perfil" },
 ];
 
 export function Nav() {

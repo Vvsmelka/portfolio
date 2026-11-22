@@ -31,7 +31,8 @@ export function FitHeading({
   const probe = useRef<HTMLSpanElement>(null);
   const [size, setSize] = useState<number | null>(null);
   const reduce = useReducedMotion();
-  const letters = Array.from(text);
+  // Los espacios van como espacio duro: en una caja inline-block un espacio normal se colapsa.
+  const letters = Array.from(text).map((ch) => (ch === " " ? "\u00A0" : ch));
 
   useLayoutEffect(() => {
     const el = wrap.current;
