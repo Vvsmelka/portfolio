@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { Marquee } from "@/components/ui/marquee";
 import { Container, Marks } from "@/components/site/bits";
 import { SectionIntro } from "@/components/site/kinetic";
 
@@ -40,12 +41,19 @@ const values = [
   ["Pensar en margen y escala", "Un proyecto tiene que poder crecer y dejar margen, no solo funcionar una vez."],
 ];
 
-const hard: { group: string; items: string[] }[] = [
-  { group: "Ecommerce y marketing", items: ["Shopify", "Meta Ads", "SEO", "Google Analytics"] },
-  { group: "Producto y desarrollo web", items: ["React", "TypeScript", "Supabase", "Python", "Vercel", "Netlify"] },
-  { group: "Inteligencia artificial", items: ["Claude", "Automatizaciones", "CRM a medida"] },
-  { group: "Gestión y método", items: ["Business Model Canvas", "Buyer Persona", "Customer Journey Map", "Excel"] },
-  { group: "Idiomas", items: ["Castellano nativo", "Inglés de negocio"] },
+const tools = [
+  ["shopify", "Shopify"],
+  ["supabase", "Supabase"],
+  ["react", "React"],
+  ["typescript", "TypeScript"],
+  ["vercel", "Vercel"],
+  ["netlify", "Netlify"],
+  ["meta", "Meta Ads"],
+  ["anthropic", "Claude"],
+  ["python", "Python"],
+  ["tailwindcss", "Tailwind CSS"],
+  ["vite", "Vite"],
+  ["googleanalytics", "Google Analytics"],
 ];
 
 export function Capabilities() {
@@ -59,7 +67,7 @@ export function Capabilities() {
           aside="Soy bueno en…"
           title="Aptitudes"
           id="aptitudes-t"
-          intro="Lo que hago bien y dónde lo he demostrado. Después, cómo trabajo y las herramientas que domino."
+          intro="Lo que hago bien y dónde lo he demostrado. Después, cómo trabajo y las herramientas que uso."
         />
 
         <ol className="mt-14 border-b border-line md:mt-20">
@@ -90,37 +98,47 @@ export function Capabilities() {
           ))}
         </ol>
 
-        <div className="mt-20 grid gap-12 md:mt-28 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
-          <div>
-            <h3 className="font-mono text-xs tracking-[0.14em] text-mute uppercase">Valores · Cómo trabajo</h3>
-            <ul className="mt-5 grid gap-px overflow-hidden rounded-xl border border-line bg-line">
-              {values.map(([v, d]) => (
-                <li key={v} className="bg-ink-2 p-5 md:p-6">
-                  <p className="text-lg font-semibold tracking-tight text-fg">{v}</p>
-                  <p className="mt-1.5 leading-relaxed text-mute">{d}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-mono text-xs tracking-[0.14em] text-mute uppercase">Hard skills</h3>
-            <div className="mt-5 grid gap-px overflow-hidden rounded-xl border border-line bg-line">
-              {hard.map((h) => (
-                <div key={h.group} className="grid gap-3 bg-ink-2 p-5 md:grid-cols-[11rem_1fr] md:items-baseline md:gap-6 md:p-6">
-                  <p className="font-mono text-[11px] tracking-[0.12em] text-mute uppercase">{h.group}</p>
-                  <ul className="flex flex-wrap gap-2">
-                    {h.items.map((x) => (
-                      <li key={x} className="rounded-md border border-line bg-ink px-2.5 py-1 text-sm text-fg">
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="mt-20 md:mt-28">
+          <h3 className="font-mono text-xs tracking-[0.14em] text-mute uppercase">Valores · Cómo trabajo</h3>
+          <ul className="mt-5 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            {values.map(([v, d]) => (
+              <li key={v} className="bg-ink-2 p-5 md:p-6">
+                <p className="text-lg font-semibold tracking-tight text-fg">{v}</p>
+                <p className="mt-1.5 leading-relaxed text-mute">{d}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </Container>
+
+      <div className="mt-20 md:mt-28">
+        <Container>
+          <h3 className="mb-6 font-mono text-xs tracking-[0.14em] text-mute uppercase">Hard skills</h3>
+        </Container>
+        <div className="relative">
+          <Marquee pauseOnHover className="[--duration:38s] [--gap:3.5rem]">
+            {tools.map(([slug, name]) => (
+              <div key={slug} className="flex items-center gap-3 text-mute">
+                <span
+                  aria-hidden
+                  className="h-6 w-6 bg-current"
+                  style={{
+                    maskImage: `url(logos/${slug}.svg)`,
+                    WebkitMaskImage: `url(logos/${slug}.svg)`,
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                  }}
+                />
+                <span className="text-lg font-medium tracking-tight whitespace-nowrap">{name}</span>
+              </div>
+            ))}
+          </Marquee>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-ink to-transparent md:w-48" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-ink to-transparent md:w-48" />
+        </div>
+      </div>
     </section>
   );
 }
