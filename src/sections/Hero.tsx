@@ -6,7 +6,8 @@ import {
   useTransform,
   type MotionValue,
 } from "motion/react";
-import { ArrowRightIcon, HandPointingIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon } from "@phosphor-icons/react/dist/csr/ArrowRight";
+import { HandPointingIcon } from "@phosphor-icons/react/dist/csr/HandPointing";
 import { Marquee } from "@/components/ui/marquee";
 import { Container } from "@/components/site/bits";
 import { cn } from "@/lib/utils";

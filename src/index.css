@@ -114,3 +114,11 @@
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(3px); }
 }
+
+/* Arcos del mapa de viajes: trazo discontinuo en movimiento */
+.trip-arc {
+  animation: arc-dash 1.8s linear infinite;
+}
+@keyframes arc-dash {
+  to { stroke-dashoffset: -24; }
+}

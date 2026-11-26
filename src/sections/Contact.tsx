@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { ArrowUpIcon, CheckIcon, CopyIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react";
+import { ArrowUpIcon } from "@phosphor-icons/react/dist/csr/ArrowUp";
+import { CheckIcon } from "@phosphor-icons/react/dist/csr/Check";
+import { CopyIcon } from "@phosphor-icons/react/dist/csr/Copy";
+import { EnvelopeSimpleIcon } from "@phosphor-icons/react/dist/csr/EnvelopeSimple";
 import { Container } from "@/components/site/bits";
 import { FitHeading, VelocityMarquee } from "@/components/site/kinetic";
 

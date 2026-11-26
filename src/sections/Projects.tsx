@@ -8,7 +8,9 @@ import {
   useTransform,
   type MotionValue,
 } from "motion/react";
-import { ArrowRightIcon, ArrowUpRightIcon, XIcon } from "@phosphor-icons/react";
+import { ArrowRightIcon } from "@phosphor-icons/react/dist/csr/ArrowRight";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/csr/ArrowUpRight";
+import { XIcon } from "@phosphor-icons/react/dist/csr/X";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { CaseDetail, Container, Shot, Marks } from "@/components/site/bits";
 import { SectionIntro } from "@/components/site/kinetic";
@@ -25,7 +27,12 @@ type Project = {
   content: ReactNode;
 };
 
-const tpcPosts = ["img/tpc-ig-1.webp", "img/tpc-ig-2.webp", "img/tpc-ig-3.webp", "img/tpc-ig-4.webp"];
+const tpcPosts = [
+  "img/tpc-ig-1.webp",
+  "img/tpc-ig-2.webp",
+  "img/tpc-ig-3.webp",
+  "img/tpc-ig-4.webp",
+];
 
 const AbraCover = () => (
   <div className="relative h-full w-full overflow-hidden bg-[#0b1214]">
@@ -46,7 +53,11 @@ const cards: Project[] = [
     title: "The Pickle Center",
     lead: "Marca de pickleball con tienda online, eventos y asesoría a clubes.",
     role: "Cofundador: tienda, marca, eventos y alianzas",
-    facts: ["11 marcas", "Torneo con 50 participantes", "Festival con 6 pistas"],
+    facts: [
+      "11 marcas",
+      "Torneo con 50 participantes",
+      "Festival con 6 pistas",
+    ],
     src: "img/card-tpc.webp",
     content: (
       <CaseDetail
@@ -54,7 +65,12 @@ const cards: Project[] = [
         media={
           <div className="grid grid-cols-2 gap-2 p-2 md:grid-cols-4">
             {tpcPosts.map((src) => (
-              <Shot key={src} src={src} alt="Publicación de Instagram de The Pickle Center" className="rounded-xl" />
+              <Shot
+                key={src}
+                src={src}
+                alt="Publicación de Instagram de The Pickle Center"
+                className="rounded-xl"
+              />
             ))}
           </div>
         }
@@ -66,7 +82,10 @@ const cards: Project[] = [
           "Campaña de sesiones en centros educativos de Bizkaia y primeros contactos para abrir mercado en Seúl.",
         ]}
         tools={["Shopify", "Meta Ads", "SEO", "Python"]}
-        link={{ href: "https://thepicklecenter.com", label: "Visitar la tienda" }}
+        link={{
+          href: "https://thepicklecenter.com",
+          label: "Visitar la tienda",
+        }}
       />
     ),
   },
@@ -80,7 +99,12 @@ const cards: Project[] = [
     content: (
       <CaseDetail
         lead="Empresa de reformas, fachadas y trabajos verticales en Bizkaia. Rediseño de marca, web nueva y sistema de captación completo, desde el anuncio hasta la visita comercial."
-        media={<Shot src="img/anreformas.webp" alt="Portada de la nueva web de AN Reformas" />}
+        media={
+          <Shot
+            src="img/anreformas.webp"
+            alt="Portada de la nueva web de AN Reformas"
+          />
+        }
         caption="Versión de trabajo. Las imágenes de muestra se sustituirán por obras reales antes de publicar."
         bullets={[
           "Rediseño de la identidad visual conservando el logotipo.",
@@ -105,7 +129,12 @@ const cards: Project[] = [
     content: (
       <CaseDetail
         lead="Empresa de gestión de ingresos para alojamientos turísticos. Desarrollo de la web de captación y del CRM que utiliza el equipo a diario."
-        media={<Shot src="img/hosts-crm.webp" alt="Panel de dirección del CRM de Hosts Revenue" />}
+        media={
+          <Shot
+            src="img/hosts-crm.webp"
+            alt="Panel de dirección del CRM de Hosts Revenue"
+          />
+        }
         caption="Modo demostración con datos de ejemplo."
         bullets={[
           "Asignación automática de cada nuevo contacto al comercial con menos carga, con la primera tarea programada en la franja que pidió el cliente.",
@@ -122,7 +151,11 @@ const cards: Project[] = [
     title: "Abra Innova",
     lead: "Cribado mundial con IA de oportunidades en la economía azul, para una consultora de Bizkaia.",
     role: "Cribado con IA y curso para el equipo",
-    facts: ["Fuentes en 4 idiomas", "Cada dato con su cita", "Curso de IA en 5 sesiones"],
+    facts: [
+      "Fuentes en 4 idiomas",
+      "Cada dato con su cita",
+      "Curso de IA en 5 sesiones",
+    ],
     cover: <AbraCover />,
     content: (
       <CaseDetail
@@ -168,16 +201,26 @@ const others = [
     title: "Konsultek",
     text: "Nació en 2024 como B-Digital Solutions, con Ander Martin: web, reservas online, SEO local y Kit Digital para pequeños comercios. Desde Seúl suma inteligencia comercial entre Corea del Sur y Europa.",
     tag: "Desde 2024",
+    img: "img/seul-gsc-2.webp",
   },
   {
     title: "Strabe Motion",
     href: "https://vvsmelka.github.io/Strabe-App/",
     text: "Marketplace de plazas de garaje entre particulares en Gran Bilbao. Lista de espera, panel de datos y aplicación iOS en desarrollo.",
     tag: "En validación",
+    img: "img/strabe.webp",
   },
 ];
 
-function CaseModal({ p, open, onClose }: { p: Project; open: boolean; onClose: () => void }) {
+function CaseModal({
+  p,
+  open,
+  onClose,
+}: {
+  p: Project;
+  open: boolean;
+  onClose: () => void;
+}) {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -192,7 +235,12 @@ function CaseModal({ p, open, onClose }: { p: Project; open: boolean; onClose: (
   return createPortal(
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-[70] overflow-auto" role="dialog" aria-modal="true" aria-label={p.title}>
+        <div
+          className="fixed inset-0 z-[70] overflow-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-label={p.title}
+        >
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -217,7 +265,9 @@ function CaseModal({ p, open, onClose }: { p: Project; open: boolean; onClose: (
               <XIcon className="h-5 w-5" />
             </button>
             <p className="font-mono text-sm text-mute">{p.category}</p>
-            <h3 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-fg md:text-6xl">{p.title}</h3>
+            <h3 className="mt-3 text-4xl font-semibold tracking-[-0.04em] text-fg md:text-6xl">
+              {p.title}
+            </h3>
             <div className="pt-8">{p.content}</div>
           </motion.div>
         </div>
@@ -228,28 +278,51 @@ function CaseModal({ p, open, onClose }: { p: Project; open: boolean; onClose: (
 }
 
 /** Cada proyecto ocupa la pantalla y se queda fijo mientras el siguiente se apila encima. */
-function StackCard({ p, i, total, progress }: { p: Project; i: number; total: number; progress: MotionValue<number> }) {
+function StackCard({
+  p,
+  i,
+  total,
+  progress,
+}: {
+  p: Project;
+  i: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start start"] });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "start start"],
+  });
   const imgScale = useTransform(scrollYProgress, [0, 1], [1.25, 1]);
-  const scale = useTransform(progress, [i / total, 1], [1, 1 - (total - i) * 0.035]);
+  const scale = useTransform(
+    progress,
+    [i / total, 1],
+    [1, 1 - (total - i) * 0.035],
+  );
   const close = useRef(() => {
     setOpen(false);
     trigger.current?.focus({ preventScroll: true });
   }).current;
 
   return (
-    <div ref={ref} className="sticky top-0 flex h-[100svh] items-center justify-center px-3 md:px-6">
+    <div
+      ref={ref}
+      className="sticky top-0 flex h-[100svh] items-center justify-center px-3 md:px-6"
+    >
       <motion.article
         style={{ scale: reduce ? 1 : scale, top: `calc(-4vh + ${i * 16}px)` }}
         className="relative h-[78svh] max-h-[760px] w-full max-w-6xl origin-top overflow-hidden rounded-[22px] border border-white/10 bg-[#0b0d10] text-white shadow-[0_-24px_60px_-30px_rgb(0_0_0/0.55)] md:rounded-[28px]"
       >
         {/* Imagen: arriba en móvil y a la derecha en escritorio, fundida con el fondo para que no choque con el título */}
         <div className="absolute inset-x-0 top-0 h-[55%] overflow-hidden md:inset-y-0 md:right-0 md:left-auto md:h-full md:w-[64%]">
-          <motion.div className="h-full w-full" style={reduce ? undefined : { scale: imgScale }}>
+          <motion.div
+            className="h-full w-full"
+            style={reduce ? undefined : { scale: imgScale }}
+          >
             {p.src ? (
               <img
                 src={p.src}
@@ -268,13 +341,17 @@ function StackCard({ p, i, total, progress }: { p: Project; i: number; total: nu
           aria-hidden
           className="absolute inset-0 bg-[linear-gradient(180deg,rgb(11_13_16/0.7)_0%,transparent_14%,transparent_30%,#0b0d10_56%)] md:bg-[linear-gradient(90deg,#0b0d10_36%,rgb(11_13_16/0.55)_56%,rgb(11_13_16/0.1)_82%),linear-gradient(180deg,rgb(11_13_16/0.55)_0%,transparent_20%)]"
         />
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_55%_at_0%_100%,rgb(37_80_230/0.22),transparent_70%)]" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_55%_at_0%_100%,rgb(37_80_230/0.22),transparent_70%)]"
+        />
 
         <div className="relative flex h-full flex-col justify-between p-5 md:p-10">
           <div className="flex items-start justify-between gap-4 font-mono text-[11px] tracking-[0.14em] text-white/70 uppercase md:text-xs">
             <span>{p.category}</span>
             <span className="shrink-0 tabular-nums">
-              {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+              {String(i + 1).padStart(2, "0")} /{" "}
+              {String(total).padStart(2, "0")}
             </span>
           </div>
 
@@ -285,7 +362,9 @@ function StackCard({ p, i, total, progress }: { p: Project; i: number; total: nu
             <p className="mt-3 max-w-md font-mono text-[11px] tracking-[0.1em] text-[#9fb4ff] uppercase md:text-xs">
               Mi papel · {p.role}
             </p>
-            <p className="mt-3 max-w-md text-base leading-relaxed text-white/75 md:mt-4 md:text-lg">{p.lead}</p>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-white/75 md:mt-4 md:text-lg">
+              {p.lead}
+            </p>
             <div className="mt-5 flex flex-col gap-5 md:mt-7 md:max-w-[44%] lg:max-w-[46%]">
               <ul className="flex flex-wrap gap-2">
                 {p.facts.map((f) => (
@@ -317,11 +396,20 @@ function StackCard({ p, i, total, progress }: { p: Project; i: number; total: nu
 
 function ProjectStack() {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
   return (
     <div ref={ref} className="relative mt-6 md:mt-10">
       {cards.map((p, i) => (
-        <StackCard key={p.title} p={p} i={i} total={cards.length} progress={scrollYProgress} />
+        <StackCard
+          key={p.title}
+          p={p}
+          i={i}
+          total={cards.length}
+          progress={scrollYProgress}
+        />
       ))}
     </div>
   );
@@ -329,11 +417,15 @@ function ProjectStack() {
 
 export function Projects() {
   return (
-    <section id="proyectos" aria-labelledby="proyectos-t" className="relative border-t border-line pt-24 pb-24 md:pt-36 md:pb-36">
+    <section
+      id="proyectos"
+      aria-labelledby="proyectos-t"
+      className="relative border-t border-line pt-24 pb-24 md:pt-36 md:pb-36"
+    >
       <Marks />
       <Container>
         <SectionIntro
-          index="05"
+          index="01"
           label="Proyectos"
           aside={`${cards.length} casos`}
           title="Proyectos"
@@ -346,29 +438,46 @@ export function Projects() {
 
       <Container className="mt-20 md:mt-28">
         <BlurFade inView>
-          <h3 className="text-xl font-semibold tracking-tight text-fg md:text-2xl">Otros proyectos</h3>
+          <h3 className="text-xl font-semibold tracking-tight text-fg md:text-2xl">
+            Otros proyectos
+          </h3>
         </BlurFade>
         <div className="mt-6 grid gap-px overflow-hidden rounded-xl border border-line bg-line md:grid-cols-2">
           {others.map((o, i) => (
             <BlurFade key={o.title} inView delay={0.05 * i} className="h-full">
-              <div className="flex h-full flex-col gap-3 bg-ink-2 p-6 md:p-8">
-                <div className="flex items-start justify-between gap-4">
-                  {o.href ? (
-                    <a
-                      href={o.href}
-                      target="_blank"
-                      rel="noopener"
-                      className="group inline-flex items-center gap-1.5 text-lg font-semibold tracking-tight text-fg"
-                    >
-                      {o.title}
-                      <ArrowUpRightIcon className="h-4 w-4 text-mute transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
-                    </a>
-                  ) : (
-                    <p className="text-lg font-semibold tracking-tight text-fg">{o.title}</p>
-                  )}
-                  <span className="shrink-0 rounded-md border border-line bg-ink px-2 py-0.5 font-mono text-[11px] text-mute">{o.tag}</span>
+              <div className="flex h-full flex-col bg-ink-2">
+                <div className="aspect-[16/9] overflow-hidden border-b border-line bg-ink-3">
+                  <img
+                    src={o.img}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover object-top"
+                  />
                 </div>
-                <p className="leading-relaxed text-mute">{o.text}</p>
+                <div className="flex flex-1 flex-col gap-3 p-6 md:p-8">
+                  <div className="flex items-start justify-between gap-4">
+                    {o.href ? (
+                      <a
+                        href={o.href}
+                        target="_blank"
+                        rel="noopener"
+                        className="group inline-flex items-center gap-1.5 text-lg font-semibold tracking-tight text-fg"
+                      >
+                        {o.title}
+                        <ArrowUpRightIcon className="h-4 w-4 text-mute transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+                      </a>
+                    ) : (
+                      <p className="text-lg font-semibold tracking-tight text-fg">
+                        {o.title}
+                      </p>
+                    )}
+                    <span className="shrink-0 rounded-md border border-line bg-ink px-2 py-0.5 font-mono text-[11px] text-mute">
+                      {o.tag}
+                    </span>
+                  </div>
+                  <p className="leading-relaxed text-mute">{o.text}</p>
+                </div>
               </div>
             </BlurFade>
           ))}

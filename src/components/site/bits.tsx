@@ -1,5 +1,6 @@
 import React from "react";
-import { ArrowUpRightIcon, PlusIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/csr/ArrowUpRight";
+import { PlusIcon } from "@phosphor-icons/react/dist/csr/Plus";
 import { cn } from "@/lib/utils";
 
 export function Container({ className, children }: { className?: string; children: React.ReactNode }) {

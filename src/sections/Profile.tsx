@@ -1,15 +1,14 @@
+import { useEffect, useRef } from "react";
+import { animate, useInView, useReducedMotion } from "motion/react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { Container, Marks } from "@/components/site/bits";
 import { SectionIntro } from "@/components/site/kinetic";
 
 // Todo lo que alguien quiere saber de un vistazo, sin tener que deducirlo.
 const facts = [
-  ["Edad", "21 años"],
   ["Base", "Bilbao, Bizkaia · nacido en Valladolid"],
   ["Formación", "LEINN, Mondragon Unibertsitatea · 4.º curso (2023–2027)"],
-  ["Estancias", "Seúl (Living Lab, 2026) · Nueva York (2025) · India"],
   ["Nitton", "Team Leader, Customer Leader y Digital Leader"],
-  ["Cofundador", "The Pickle Center"],
   ["Idiomas", "Castellano e inglés"],
 ];
 
@@ -22,30 +21,78 @@ const now = [
 
 const interests = ["Pickleball", "Balonmano", "Viajar", "Corea del Sur", "Leer"];
 
+const stats: [number, string][] = [
+  [21, "años"],
+  [4, "países con proyectos"],
+  [3, "roles en Nitton"],
+  [11, "marcas en la tienda de The Pickle Center"],
+];
+
+function CountUp({ to }: { to: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
+  const reduce = useReducedMotion();
+  useEffect(() => {
+    const el = ref.current;
+    if (!inView || !el) return;
+    if (reduce) {
+      el.textContent = String(to);
+      return;
+    }
+    const c = animate(0, to, {
+      duration: 1.4,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate: (v) => (el.textContent = String(Math.round(v))),
+    });
+    return () => c.stop();
+  }, [inView, to, reduce]);
+  return <span ref={ref}>{reduce ? to : 0}</span>;
+}
+
 export function Profile() {
   return (
     <section id="perfil" aria-labelledby="perfil-t" className="relative border-t border-line py-24 md:py-36">
       <Marks />
       <Container>
-        <SectionIntro index="01" label="Sobre mí" aside="21 años · Bilbao" title="Sobre mí" id="perfil-t" max={230} />
+        <SectionIntro index="02" label="Sobre mí" aside="21 años · Bilbao" title="Sobre mí" id="perfil-t" max={230} />
       </Container>
-      <Container className="mt-12 grid grid-cols-1 gap-12 md:mt-16 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
+      <Container className="mt-10 md:mt-14">
+        <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-line bg-line lg:grid-cols-4">
+          {stats.map(([n, label]) => (
+            <li key={label} className="flex flex-col justify-between gap-3 bg-ink-2 p-5 md:p-7">
+              <span className="text-[3.4rem] leading-none font-semibold tracking-[-0.06em] text-fg tabular-nums md:text-[5rem]">
+                <CountUp to={n} />
+              </span>
+              <span className="text-sm leading-snug text-mute md:text-base">{label}</span>
+            </li>
+          ))}
+        </ul>
+      </Container>
+      <Container className="mt-10 grid grid-cols-1 gap-12 md:mt-14 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
         <BlurFade inView className="min-w-0">
           <div className="grid gap-5 text-lg leading-relaxed text-mute">
             <p>
               <span className="text-fg">Soy Melkamu Gomez-Cruzado, tengo 21 años y vivo en Bilbao.</span> Estoy en el
-              último curso de LEINN, el grado de Liderazgo, Emprendimiento e Innovación de Mondragon Unibertsitatea.
-            </p>
-            <p>
-              Desde el primer curso aprendo con proyectos reales: he cofundado The Pickle Center, lo he llevado a India,
-              Nueva York y Seúl, y hoy llevo proyectos de ecommerce, captación de clientes e inteligencia artificial para
-              empresas de Bizkaia.
+              último curso de LEINN, en Mondragon Unibertsitatea, y he cofundado The Pickle Center.
             </p>
             <p>
               Donde más aporto es abriendo mercado: poner en marcha un proyecto, conseguir los primeros clientes y crear
               relaciones con marcas, clubes y socios, aquí o fuera.
             </p>
           </div>
+          <figure className="relative mt-8 overflow-hidden rounded-xl border border-line">
+            <img
+              src="img/bilbao-zubizuri.webp"
+              alt="El puente Zubizuri, en Uribitarte, Bilbao"
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/3] w-full object-cover"
+            />
+            <figcaption className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-2 bg-gradient-to-t from-black/65 to-transparent px-4 pt-12 pb-3.5 text-white">
+              <span className="text-sm font-medium">Uribitarte, junto a la sede de Nitton</span>
+              <span className="font-mono text-[11px] text-white/80">Bilbao</span>
+            </figcaption>
+          </figure>
           <div className="mt-8">
             <p className="mb-3 font-mono text-xs tracking-[0.12em] text-mute uppercase">Intereses</p>
             <ul className="flex flex-wrap gap-2">

@@ -14,7 +14,7 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <a
-        href="#perfil"
+        href="#proyectos"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-full focus:bg-fg focus:px-4 focus:py-2 focus:text-ink"
       >
         Saltar al contenido
@@ -24,12 +24,12 @@ export default function App() {
       <main className="relative z-10">
         <Hero />
         <Logos />
+        <Projects />
         <Words />
         <Profile />
         <Leinn />
         <Trips />
         <Capabilities />
-        <Projects />
         <Contact />
       </main>
       <Footer />
